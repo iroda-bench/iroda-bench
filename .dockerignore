@@ -1,0 +1,7 @@
+**
+!pyproject.toml
+!uv.lock
+!environment/
+environment/*
+!environment/Dockerfile
+!environment/example_agent.py

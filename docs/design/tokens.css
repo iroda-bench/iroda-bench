@@ -1,0 +1,62 @@
+/* IRODA Case File v1.2. See ../design-system.en.md for permitted pairings. */
+:root {
+  color-scheme: light;
+  --iroda-paper: #f7f4ee;
+  --iroda-surface: #fffcf7;
+  --iroda-ink: #192b2c;
+  --iroda-muted: #4c5e5c;
+  --iroda-rule: #d9dcd3;
+  --iroda-control-border: #727d77;
+  --iroda-copper: #a43d27;
+  --iroda-copper-hover: #80301f;
+  --iroda-copper-wash: #f0ded2;
+  --iroda-on-copper: #ffffff;
+  --iroda-ledger: #193536;
+  --iroda-on-ledger: #e5f3eb;
+  --iroda-muted-on-ledger: #bdd4cb;
+  --iroda-copper-on-ledger: #ffb493;
+  --iroda-rule-on-ledger: #526d6a;
+  --iroda-focus: var(--iroda-copper);
+  --iroda-focus-on-ledger: var(--iroda-copper-on-ledger);
+
+  --iroda-correct-ink: #315443;
+  --iroda-correct-fill: #e0eadc;
+  --iroda-incorrect-ink: #8d3029;
+  --iroda-incorrect-fill: #f6dfd9;
+  --iroda-attention-ink: #68480f;
+  --iroda-attention-fill: #f5e8c9;
+  --iroda-neutral-ink: var(--iroda-muted);
+  --iroda-neutral-fill: #ebeee8;
+
+  --iroda-font-display: Georgia, "Times New Roman", serif;
+  --iroda-font-ui: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --iroda-font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --iroda-type-label: .8125rem;
+  --iroda-type-small: .875rem;
+  --iroda-type-body: 1rem;
+  --iroda-type-title: 1.25rem;
+  --iroda-type-section: clamp(2rem, 4vw, 3.5rem);
+  --iroda-type-display: clamp(2.5rem, 6vw, 5.25rem);
+  --iroda-leading-display: 1.08;
+  --iroda-leading-label: 1.4;
+  --iroda-leading-body: 1.6;
+  --iroda-tracking-display: -.04em;
+  --iroda-tracking-label: .1em;
+  --iroda-tracking-wordmark: .14em;
+
+  --iroda-space-1: .25rem;
+  --iroda-space-2: .5rem;
+  --iroda-space-3: .75rem;
+  --iroda-space-4: 1rem;
+  --iroda-space-5: 1.5rem;
+  --iroda-space-6: 2rem;
+  --iroda-space-7: 3rem;
+  --iroda-space-8: 4rem;
+  --iroda-radius-control: .25rem;
+  --iroda-radius-panel: .5rem;
+  --iroda-container: 72rem;
+  --iroda-measure: 65ch;
+  --iroda-target: 2.75rem;
+  --iroda-motion-feedback: 120ms;
+  --iroda-motion-draw: 800ms;
+}

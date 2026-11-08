@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" lang="hu" viewBox="0 0 1120 720" role="img" aria-labelledby="title desc">
+  <title id="title">IRODA / Az ügyirat</title>
+  <desc id="desc">Papírszínű és petrolkék arculati mintalap az IRODA számára. Az ügyiratjel behajtott sarka rézszínű. A vonalazott sorok a próbálkozás három lépését mutatják, a címkék az eredményállapotokat.</desc>
+  <rect width="1120" height="720" fill="#f7f4ee"/>
+  <g transform="translate(56 38)">
+    <rect width="48" height="48" rx="8" fill="#193536"/>
+    <path d="M11 38V10h18l8 8v20z" fill="#fffcf7"/>
+    <path d="M29 10v8h8z" fill="#a43d27"/>
+    <path d="M17 21h14v2H17zm0 5h14v2H17zm0 5h8v2h-8z" fill="#193536"/>
+  </g>
+  <g font-family="system-ui, sans-serif" fill="#192b2c">
+    <text x="120" y="61" font-size="22" font-weight="700" letter-spacing="3.08">IRODA</text>
+    <text x="120" y="82" font-size="14" fill="#4c5e5c">Magyar nagyvállalati benchmark</text>
+  </g>
+  <g font-family="monospace" font-size="14" letter-spacing="1.4">
+    <text x="1064" y="69" fill="#4c5e5c" text-anchor="end">ARCULAT / V1.1</text>
+    <text x="56" y="161" fill="#a43d27" font-weight="700">01 / ARCULAT</text>
+  </g>
+  <path d="M56 110.5h1008M56 510.5h1008M56 650.5h1008" fill="none" stroke="#d9dcd3"/>
+  <g fill="#192b2c" font-family="Georgia, serif" letter-spacing="-2.8" font-size="77">
+    <text x="54" y="258">Az ügyirat</text>
+    <text x="54" y="341" lang="en">The Case File</text>
+  </g>
+  <g fill="#4c5e5c" font-family="system-ui, sans-serif" font-size="18">
+    <text x="56" y="404">Nyílt forráskódú magyar nagyvállalati benchmark.</text>
+    <text x="56" y="437" lang="en">An open-source Hungarian enterprise benchmark.</text>
+  </g>
+  <rect x="600" y="142" width="464" height="326" rx="8" fill="#193536"/>
+  <text x="628" y="177" font-family="monospace" font-size="14" letter-spacing="1.4" fill="#ffb493">MUNKAFOLYAMAT / PRÓBÁLKOZÁS</text>
+  <text x="628" y="224" font-family="Georgia, serif" font-size="34" fill="#e5f3eb">Egy próbálkozás menete</text>
+  <path d="M628 247.5h408m-408 64h408m-408 64h408" fill="none" stroke="#bdd4cb" opacity=".35"/>
+  <g font-family="monospace" font-size="14" fill="#ffb493">
+    <text x="628" y="275">01</text>
+    <text x="628" y="339">02</text>
+    <text x="628" y="403">03</text>
+  </g>
+  <g font-family="system-ui, sans-serif" font-size="17" font-weight="600" fill="#e5f3eb">
+    <text x="672" y="275">Kiinduló adatok</text>
+    <text x="672" y="339">Végrehajtás</text>
+    <text x="672" y="403">Ellenőrzés</text>
+  </g>
+  <g font-family="system-ui, sans-serif" font-size="14" fill="#bdd4cb">
+    <text x="672" y="297">Friss SQLite-másolat</text>
+    <text x="672" y="361">Magyar feladatleírás és MCP-eszközök</text>
+    <text x="672" y="425">Strukturált válasz vagy az adatbázis végállapota</text>
+  </g>
+  <text x="56" y="548" font-family="monospace" font-size="14" font-weight="700" letter-spacing="1.4" fill="#a43d27">02 / EREDMÉNYCÍMKÉK</text>
+  <g font-family="system-ui, sans-serif" font-size="14" font-weight="600">
+    <rect x="56" y="566" width="66" height="32" rx="4" fill="#e0eadc"/>
+    <text x="89" y="587" text-anchor="middle" fill="#315443">Helyes</text>
+    <rect x="130" y="566" width="84" height="32" rx="4" fill="#f6dfd9"/>
+    <text x="172" y="587" text-anchor="middle" fill="#8d3029">Helytelen</text>
+    <rect x="222" y="566" width="108" height="32" rx="4" fill="#f5e8c9"/>
+    <text x="276" y="587" text-anchor="middle" fill="#68480f">Futtatási hiba</text>
+    <rect x="338" y="566" width="100" height="32" rx="4" fill="#f5e8c9"/>
+    <text x="388" y="587" text-anchor="middle" fill="#68480f">Befejezetlen</text>
+    <rect x="446" y="566" width="104" height="32" rx="4" fill="#ebeee8"/>
+    <text x="498" y="587" text-anchor="middle" fill="#4c5e5c">Nem érhető el</text>
+  </g>
+  <g font-family="monospace" font-size="13" fill="#4c5e5c">
+    <text x="600" y="548" fill="#a43d27" font-size="14" font-weight="700" letter-spacing="1.4">03 / PALETTA</text>
+    <rect x="600" y="566" width="100" height="32" rx="4" fill="#f7f4ee" stroke="#727d77"/>
+    <text x="600" y="620">PAPÍR</text>
+    <rect x="721" y="566" width="100" height="32" rx="4" fill="#192b2c"/>
+    <text x="721" y="620">TINTA</text>
+    <rect x="842" y="566" width="100" height="32" rx="4" fill="#193536"/>
+    <text x="842" y="620">PETROLKÉK</text>
+    <rect x="963" y="566" width="100" height="32" rx="4" fill="#a43d27"/>
+    <text x="963" y="620">RÉZ</text>
+    <text x="56" y="680" letter-spacing="1">ARCULATI MINTALAP</text>
+    <text x="1064" y="680" text-anchor="end" letter-spacing="1">01 / 01</text>
+  </g>
+</svg>

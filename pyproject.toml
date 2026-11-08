@@ -1,0 +1,32 @@
+[project]
+name = "iroda-benchmark"
+version = "0.1.0"
+description = "An evaluation benchmark for Hungarian enterprise workflows over MCP"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = "MIT"
+dependencies = [
+    "httpx",
+    "inspect-ai==0.3.288",
+    "mcp==1.30.0",
+    "openai",
+    "pydantic",
+]
+
+[project.optional-dependencies]
+providers = ["anthropic", "google-genai"]
+
+[dependency-groups]
+dev = ["pytest", "ruff"]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+target-version = "py312"
+include = ["benchmark.py", "iroda_bench/*.py", "environment/*.py", "tests/*.py"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = ["docker: requires a running Docker daemon"]

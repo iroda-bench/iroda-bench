@@ -1,0 +1,78 @@
+# Northwind termékazonosító | magyar megnevezés | nagykereskedelmi kiszerelés | szimulált áfakulcs
+1|Fűszeres fekete tea|10 doboz × 20 filter|27
+2|Világos palackos sör|24 × 0,33 l|27
+3|Ánizsszörp|12 × 550 ml|27
+4|Fűszerpaprikás grillkeverék|48 × 170 g|27
+5|Paprikás egytálétel-alap|36 doboz|27
+6|Szederlekvár|12 × 225 g|27
+7|Aszalt körte|12 × 450 g|27
+8|Vörösáfonya-mártás|12 × 340 g|27
+9|Marhahúsos ragu|18 × 500 g|27
+10|Lazacikra|12 × 200 ml|27
+11|Érlelt kéksajt|1 kg|18
+12|Érlelt juhsajt|10 × 500 g|18
+13|Szárított tengeri alga|2 kg|27
+14|Natúr tofu|40 × 100 g|27
+15|Csökkentett sótartalmú szójaszósz|24 × 250 ml|27
+16|Habcsókos tortaalap|32 × 500 g|18
+17|Bárányragu konzerv|20 × 1 kg|27
+18|Fagyasztott tigrisrák|16 kg|27
+19|Kakaós teasütemény|10 doboz × 12 db|18
+20|Narancslekvár díszdobozban|30 doboz|27
+21|Vajas pogácsa|24 csomag × 4 db|18
+22|Ropogós rozskenyér|24 × 500 g|18
+23|Vékony lepénykenyér|12 × 250 g|18
+24|Guaranás üdítőital|12 × 330 ml|27
+25|Mogyorós nugátkrém|20 × 450 g|27
+26|Gyümölcsös gumicukor|100 × 250 g|27
+27|Táblás tejcsokoládé|100 × 100 g|27
+28|Savanyú káposzta|25 × 825 g|27
+29|Fűszeres grillkolbász|50 tasak × 30 db|27
+30|Pácolt heringfilé|10 × 200 g|27
+31|Márványos kéksajt|12 × 100 g|18
+32|Tejszínes krémsajt|24 × 200 g|18
+33|Érlelt kecskesajt|500 g|18
+34|Borostyánszínű felső erjesztésű sör|24 × 0,33 l|27
+35|Pörkölt malátás barna sör|24 × 0,33 l|27
+36|Ecetes hering|24 × 250 g|27
+37|Kapros pácolt lazac|12 × 500 g|27
+38|Dűlőválogatás vörösbor|12 × 0,75 l|27
+39|Zöld gyógynövénylikőr|0,7 l|27
+40|Tarisznyarákhús konzerv|24 × 115 g|27
+41|Tejszínes kagylóleves konzerv|12 × 340 g|27
+42|Zöldséges pirított tésztaalap|32 × 1 kg|27
+43|Pörkölt szemes kávé|16 × 500 g|27
+44|Pálmacukor|20 × 2 kg|27
+45|Füstölt heringfilé|1 kg|27
+46|Sós hering üvegben|4 × 450 g|27
+47|Fahéjas vajas keksz|10 × 115 g|18
+48|Étcsokoládé-válogatás|10 csomag|27
+49|Medvecukor|24 × 50 g|27
+50|Fehér csokoládé|12 × 100 g|27
+51|Aszalt almakarikák|50 × 300 g|27
+52|Réteslap|16 × 2 kg|27
+53|Húsos batyu|48 db|18
+54|Fűszeres húsos pite|16 db|18
+55|Húsos-burgonyás rakott pite|24 doboz × 2 db|27
+56|Burgonyanudli|24 × 250 g|27
+57|Sajtos töltött tészta|24 × 250 g|27
+58|Fokhagymás csiga|24 db|27
+59|Olvasztani való hegyi sajt|5 kg|18
+60|Fehérpenészes lágy sajt|15 × 300 g|18
+61|Juharszirup|24 × 500 ml|27
+62|Karamellás pite|48 db|18
+63|Sült zöldségkrém|15 × 625 g|27
+64|Zsemlegombóc|20 tasak × 4 db|27
+65|Erős paprikaszósz|32 × 225 g|27
+66|Csípős ecetes okra|24 × 225 g|27
+67|Szűretlen világos sör|24 × 0,33 l|27
+68|Omlós vajas keksz|10 doboz × 8 db|18
+69|Karamellizált savósajt|10 kg|18
+70|Könnyű dobozos láger|24 × 0,33 l|27
+71|Tejszínes savósajt|10 × 500 g|18
+72|Mozzarella sós lében|24 × 200 g|18
+73|Vörös halikra|24 × 150 g|27
+74|Tartós natúr tofu|5 kg|27
+75|Félbarna sör|24 × 0,5 l|27
+76|Áfonyalikőr|500 ml|27
+77|Zöldfűszeres mártásalap|12 doboz|27
