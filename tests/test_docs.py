@@ -104,7 +104,7 @@ def test_site_uses_current_tokens():
 
 
 @pytest.mark.skipif(not SITE_TOKENS.exists(), reason="site checkout is not present")
-@pytest.mark.parametrize("page", ["site/dist/index.html", "site/dist/hu/index.html"])
+@pytest.mark.parametrize("page", ["site/dist/index.html", "site/dist/en/index.html"])
 def test_live_case_file_uses_real_tools(page):
     html = (ROOT / page).read_text()
     shown = re.findall(r'<code class="run-tool">(\w+)</code>', html)

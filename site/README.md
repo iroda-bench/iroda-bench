@@ -8,8 +8,8 @@ The static homepage introduces the benchmark, shows a starter case, and explains
 
 | Page or asset | Source |
 | --- | --- |
-| English | [Homepage](dist/index.html) |
-| Magyar | [Kezdőlap](dist/hu/index.html) |
+| Magyar (default) | [Kezdőlap](dist/index.html) |
+| English | [Homepage](dist/en/index.html) |
 | Shared design | [Tokens](dist/tokens.css) · [Stylesheet](dist/style.css) · [Motion](dist/motion.js) · [Mark](dist/mark.svg) |
 
 ## Preview and update
