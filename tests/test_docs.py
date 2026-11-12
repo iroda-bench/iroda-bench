@@ -1,5 +1,6 @@
 """Checks for the rules in docs/design-system.*.md that can be automated."""
 
+import json
 import re
 from pathlib import Path
 
@@ -170,3 +171,53 @@ def test_relative_links_resolve(path):
 @pytest.mark.parametrize("path", DOCS)
 def test_code_fences_use_tildes(path):
     assert "\n```" not in (ROOT / path).read_text()
+
+
+SITE = ROOT / "site/dist"
+SITE_URL = "https://www.irodabench.hu/"
+SITE_PAGES = {
+    "index.html": SITE_URL,
+    "en/index.html": SITE_URL + "en/",
+    "modszertan/index.html": SITE_URL + "modszertan/",
+    "en/methodology/index.html": SITE_URL + "en/methodology/",
+}
+
+
+def head_links(html: str) -> tuple[str, dict[str, str]]:
+    canonical = re.findall(r'<link rel="canonical" href="([^"]+)">', html)
+    alternates = dict(
+        re.findall(r'<link rel="alternate" hreflang="([\w-]+)" href="([^"]+)">', html)
+    )
+    assert len(canonical) == 1
+    return canonical[0], alternates
+
+
+@pytest.mark.skipif(not SITE_TOKENS.exists(), reason="site checkout is not present")
+@pytest.mark.parametrize(("page", "url"), SITE_PAGES.items())
+def test_site_page_head(page, url):
+
+    html = (SITE / page).read_text()
+    canonical, alternates = head_links(html)
+    assert canonical == url
+    assert set(alternates) == {"hu", "en", "x-default"}
+    assert url in alternates.values()
+    assert alternates["x-default"] == alternates["hu"]
+    for target in alternates.values():
+        assert target.startswith(SITE_URL)
+        other = next(p for p, u in SITE_PAGES.items() if u == target)
+        assert head_links((SITE / other).read_text())[1] == alternates
+    assert f'<meta property="og:url" content="{url}">' in html
+    image = re.search(r'<meta property="og:image" content="([^"]+)">', html)[1]
+    assert (SITE / image.removeprefix(SITE_URL)).exists()
+    blocks = re.findall(
+        r'<script type="application/ld\+json">(.*?)</script>', html, re.DOTALL
+    )
+    assert len(blocks) == 1
+    json.loads(blocks[0])
+
+
+@pytest.mark.skipif(not SITE_TOKENS.exists(), reason="site checkout is not present")
+def test_sitemap_lists_every_page():
+    sitemap = (SITE / "sitemap.xml").read_text()
+    assert set(re.findall(r"<loc>([^<]+)</loc>", sitemap)) == set(SITE_PAGES.values())
+    assert f"Sitemap: {SITE_URL}sitemap.xml" in (SITE / "robots.txt").read_text()
