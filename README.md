@@ -12,7 +12,7 @@ Az IRODA (*Intelligent Reasoning for Office Decisions and Actions*) nyílt forr�
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-193536)](#gyors-kezdés)
 [![SQLite 3.37 vagy újabb](https://img.shields.io/badge/SQLite-3.37%2B-193536)](#gyors-kezdés)
 
-[English](README.en.md) · [Gyors kezdés](#gyors-kezdés) · [Dokumentáció](#dokumentáció) · [Hozzájárulás](CONTRIBUTING.md#magyar)
+[English](README.en.md) · [Weboldal](https://www.irodabench.hu/) · [Gyors kezdés](#gyors-kezdés) · [Dokumentáció](#dokumentáció) · [Hozzájárulás](CONTRIBUTING.md#magyar)
 
 ## Gyors kezdés
 
@@ -77,3 +77,7 @@ Szívesen fogadunk új magyar nyelvű üzleti feladatokat, pontozási fejleszté
 ## Licenc
 
 Az IRODA saját kódja és dokumentációja MIT-licencű. A Northwindből származó adatok terjesztésekor őrizd meg az eredeti licencértesítéseket. Ezeket a kiinduló adatbázis `licenc_ertesites` táblája is tartalmazza. [MIT-licenc](LICENSE) · [Eredeti licencértesítések](sources/)
+
+## Hivatkozás
+
+Ha az IRODA-t publikációban vagy jelentésben használod, a hivatkozási adatokat a `CITATION.cff` fájlban találod. A GitHub ebből BibTeX-formátumot is készít. [Hivatkozási adatok](CITATION.cff)

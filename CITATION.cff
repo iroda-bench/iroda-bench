@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use IRODA, please cite it as below."
+title: "IRODA: Intelligent Reasoning for Office Decisions and Actions"
+abstract: >-
+  Open-source Hungarian enterprise benchmark that measures tool use by large
+  language models (LLMs) and AI agents on Hungarian-language business tasks,
+  with deterministic grading.
+type: software
+authors:
+  - family-names: Tisza
+    given-names: Viktor
+version: 0.1.0
+date-released: "2026-11-08"
+license: MIT
+repository-code: "https://github.com/iroda-bench/iroda-bench"
+url: "https://www.irodabench.hu/"
+keywords:
+  - LLM benchmark
+  - AI agent benchmark
+  - Hungarian
+  - Model Context Protocol
+  - Inspect

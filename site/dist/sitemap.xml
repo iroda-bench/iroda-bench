@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.irodabench.hu/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://www.irodabench.hu/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.irodabench.hu/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.irodabench.hu/"/>
+  </url>
+  <url>
+    <loc>https://www.irodabench.hu/en/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://www.irodabench.hu/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.irodabench.hu/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.irodabench.hu/"/>
+  </url>
+  <url>
+    <loc>https://www.irodabench.hu/modszertan/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://www.irodabench.hu/modszertan/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.irodabench.hu/en/methodology/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.irodabench.hu/modszertan/"/>
+  </url>
+  <url>
+    <loc>https://www.irodabench.hu/en/methodology/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://www.irodabench.hu/modszertan/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.irodabench.hu/en/methodology/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.irodabench.hu/modszertan/"/>
+  </url>
+</urlset>

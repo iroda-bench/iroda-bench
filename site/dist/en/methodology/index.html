@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How does IRODA grade large language models (LLMs) and AI agents? The two run modes, deterministic grading, worked grading examples and the limits of the measurement.">
+  <title>Methodology · IRODA Hungarian LLM and AI agent benchmark</title>
+  <link rel="canonical" href="https://www.irodabench.hu/en/methodology/">
+  <link rel="alternate" hreflang="hu" href="https://www.irodabench.hu/modszertan/">
+  <link rel="alternate" hreflang="en" href="https://www.irodabench.hu/en/methodology/">
+  <link rel="alternate" hreflang="x-default" href="https://www.irodabench.hu/modszertan/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="IRODA">
+  <meta property="og:url" content="https://www.irodabench.hu/en/methodology/">
+  <meta property="og:title" content="Methodology · IRODA Hungarian LLM and AI agent benchmark">
+  <meta property="og:description" content="How does IRODA grade large language models (LLMs) and AI agents? The two run modes, deterministic grading, worked grading examples and the limits of the measurement.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="hu_HU">
+  <meta property="og:image" content="https://www.irodabench.hu/og-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="IRODA: an open-source Hungarian LLM and AI agent benchmark for enterprise tasks.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../tokens.css">
+  <link rel="stylesheet" href="../../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "@id": "https://www.irodabench.hu/en/methodology/#article",
+        "url": "https://www.irodabench.hu/en/methodology/",
+        "headline": "How IRODA grades models and agents",
+        "inLanguage": "en",
+        "isPartOf": {"@id": "https://www.irodabench.hu/#website"},
+        "about": {"@id": "https://www.irodabench.hu/#software"},
+        "author": {"@id": "https://www.irodabench.hu/#viktor-tisza"},
+        "datePublished": "2026-11-12",
+        "dateModified": "2026-11-12"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "IRODA", "item": "https://www.irodabench.hu/en/"},
+          {"@type": "ListItem", "position": 2, "name": "Methodology", "item": "https://www.irodabench.hu/en/methodology/"}
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="masthead shell">
+    <a class="brand" href="../"><img class="mark" src="../../mark.svg" width="48" height="48" alt=""><span><strong>IRODA</strong><small>Hungarian enterprise benchmark for AI agents and LLMs</small></span></a>
+    <nav>
+      <a href="../">Home</a>
+      <a href="./" aria-current="page">Methodology</a>
+      <a href="../#results">Results</a>
+      <a href="../#start">Quick start</a>
+      <a href="https://github.com/iroda-bench/iroda-bench">GitHub</a>
+    </nav>
+    <div class="languages">
+      <a href="./" lang="en" hreflang="en" aria-current="page" aria-label="English">EN</a>
+      <a href="../../modszertan/" lang="hu" hreflang="hu" aria-label="Magyar">HU</a>
+    </div>
+  </header>
+  <main id="main" class="shell">
+    <section class="page-intro" aria-labelledby="page-title">
+      <p class="eyebrow">METHOD / GRADING</p>
+      <h1 id="page-title">How IRODA grades models and agents</h1>
+      <p class="lead">IRODA measures large language models (LLMs) and AI agents on Hungarian-language business tasks. A deterministic grader produces the result with no judge model, so the same final state always receives the same score.</p>
+      <p class="status-line"><span>Methodology for version 0.1.0</span><span>Updated: <time datetime="2026-11-12">12 November 2026</time></span></p>
+    </section>
+
+    <section id="modes" class="section">
+      <p class="eyebrow">01 / RUN MODES</p>
+      <h2>What the two modes measure</h2>
+      <p class="section-intro">Both modes use the same tasks, office tools and grading rules. Use model mode to compare LLMs. To measure the effect of an agent’s orchestration, use the same exact model revision in both modes.</p>
+      <dl class="method-rows">
+        <div><dt>Model mode</dt><dd><code>model_benchmark</code>. The case, seed database, Hungarian system prompt, MCP surface and Inspect tool-call loop are fixed. Only the model, its serving endpoint and generation settings vary.</dd></div>
+        <div><dt>Agent mode</dt><dd><code>agent_benchmark</code>. The case, seed, allowed office operations, grading and limits are fixed. The agent executable, prompts, memory and orchestration can vary. The executable runs in an isolated Docker container.</dd></div>
+      </dl>
+    </section>
+
+    <section id="lifecycle" class="section">
+      <p class="eyebrow">02 / TRIAL</p>
+      <h2>Every trial starts from a fresh copy</h2>
+      <p class="section-intro">A trial is one execution of a case. Repeated trials are independent of each other.</p>
+      <ol class="steps">
+        <li>The host loads and validates the case.</li>
+        <li>The trial starts from its own temporary copy of <code>data/seed.db</code> with a new MCP session.</li>
+        <li>The model or agent receives the original Hungarian prompt and calls the office tools until it stops or reaches a limit.</li>
+        <li>The grader on the host reads the final answer or the trial database. The grader, expected results and seed are not in the agent container.</li>
+        <li>The Inspect log keeps the trace and score. The temporary database is removed after grading.</li>
+      </ol>
+    </section>
+
+    <section id="grading" class="section">
+      <p class="eyebrow">03 / GRADING</p>
+      <h2>Two grading rules, one unambiguous outcome</h2>
+      <p class="section-intro">A scored trial receives <code>C</code> (correct) or <code>I</code> (incorrect). Inspect’s accuracy metric maps these to 1 and 0, and repeated trials are averaged per case.</p>
+      <dl class="method-rows">
+        <div><dt><code>answer</code></dt><dd>A read task with read tools only. The grader parses the final answer as a JSON object. One <code>json</code> code fence is also accepted. Expected keys must have matching values and types, and extra keys are allowed.</dd></div>
+        <div><dt><code>task_insert</code></dt><dd>A write task that also exposes write tools. The grader expects exactly one new task record with the requested fields and compares every other row of the seed’s business tables, independent of row order. Only the final state counts, not the final message or intermediate steps.</dd></div>
+      </dl>
+    </section>
+
+    <section id="example" class="section">
+      <p class="eyebrow">04 / GRADING EXAMPLE</p>
+      <h2>How the two public starter cases are graded</h2>
+      <p class="section-intro">The examples use the real expected values of the public starter cases. The trials are illustrative, not measured results.</p>
+
+      <h3>Read task: <code>office-date</code></h3>
+      <p class="prompt-label">Prompt · English translation</p>
+      <blockquote class="prompt-quote">What are the IRODA reference date and currency? Return a JSON object with the fields fordulonap (YYYY-MM-DD) and penznem (ISO code).</blockquote>
+      <div class="table-scroll" role="region" aria-labelledby="answer-caption" tabindex="0">
+        <table class="record-table">
+          <caption id="answer-caption">Final answers and their scores · Illustrative example</caption>
+          <thead><tr><th scope="col">Final answer</th><th scope="col">Outcome</th><th scope="col">Reason</th></tr></thead>
+          <tbody>
+            <tr><td><code>{"fordulonap": "2026-11-08", "penznem": "HUF"}</code></td><td><b class="badge outcome-correct">Correct</b></td><td>Every expected key and value matches.</td></tr>
+            <tr><td><code>{"fordulonap": "2026-11-08", "penznem": "HUF", "forras": "metaadat"}</code></td><td><b class="badge outcome-correct">Correct</b></td><td>Extra keys are allowed.</td></tr>
+            <tr><td lang="hu">A fordulónap 2026. november 8., a pénznem forint.</td><td><b class="badge outcome-incorrect">Incorrect</b></td><td>A prose answer, not a JSON object.</td></tr>
+            <tr><td><code>{"fordulonap": "2026-11-08"}</code></td><td><b class="badge outcome-incorrect">Incorrect</b></td><td>The <code>penznem</code> key is missing.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Write task: <code>quote-follow-up</code></h3>
+      <p class="prompt-label">Prompt · English translation</p>
+      <blockquote class="prompt-quote">Create exactly one open, high-priority follow-up task for quote 20003, assigned to Szőke Lilla and due 12 November 2026. The title is “Decemberi ajánlat követése” and the description is “Egyeztesd a vevővel a decemberi készletpótlást.” Leave other business data unchanged.</blockquote>
+      <div class="table-scroll" role="region" aria-labelledby="insert-caption" tabindex="0">
+        <table class="record-table">
+          <caption id="insert-caption">Final database states and their scores · Illustrative example</caption>
+          <thead><tr><th scope="col">Final state</th><th scope="col">Outcome</th><th scope="col">Reason</th></tr></thead>
+          <tbody>
+            <tr><td>One new task record that matches the request. Every other record is unchanged.</td><td><b class="badge outcome-correct">Correct</b></td><td>The requested fields match and there are no side effects.</td></tr>
+            <tr><td>The correct task record, but the quote status also changed.</td><td><b class="badge outcome-incorrect">Incorrect</b></td><td>An unrequested change in another business table.</td></tr>
+            <tr><td>The same task record was created twice.</td><td><b class="badge outcome-incorrect">Incorrect</b></td><td>Exactly one new record is expected.</td></tr>
+            <tr><td>One new task record due <time datetime="2026-11-13">13 November 2026</time>.</td><td><b class="badge outcome-incorrect">Incorrect</b></td><td>The due date differs from the request.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="reporting" class="section">
+      <p class="eyebrow">05 / REPORTING</p>
+      <h2>What we publish with every comparison</h2>
+      <p class="section-intro">The run log identifies the inputs with the <code>seed_sha256</code> and <code>tasks_sha256</code> hashes. We record everything else separately.</p>
+      <dl class="method-rows">
+        <div><dt>Inputs</dt><dd>Commit or release, seed and task hashes, case IDs and the number of scheduled trials.</dd></div>
+        <div><dt>Configuration</dt><dd>Benchmark mode, exact model and provider, run date, sampling settings, epochs, concurrency and limits.</dd></div>
+        <div><dt>Agent and environment</dt><dd>Agent source revision, command and image digest, and the host platform for performance claims.</dd></div>
+        <div><dt>Outcomes</dt><dd>Correct and incorrect trials per case, with run errors, limits reached and incomplete trials reported separately.</dd></div>
+      </dl>
+    </section>
+
+    <section id="limitations" class="section">
+      <p class="eyebrow">06 / LIMITATIONS</p>
+      <h2>What the measurement can’t tell you yet</h2>
+      <ul class="limits">
+        <li>Version 0.1.0 has two public starter cases with published expected results. They check the measurement pipeline and are not yet enough to judge model quality.</li>
+        <li>Public cases can end up in model training data, so a leaderboard needs a larger task set.</li>
+        <li>A published result is an observation of one recorded configuration. Provider updates or sampling can change it even when the inputs match.</li>
+        <li>The data belongs to a fictional company, <span lang="hu">Rézrigó Élelmiszer-nagykereskedelmi Kft.</span> The measurement does not cover every business process or industry.</li>
+        <li>The grader judges the final state. Answer style, number of steps and cost have to be reported separately.</li>
+      </ul>
+      <p class="source-link"><a href="https://github.com/iroda-bench/iroda-bench/blob/main/docs/methodology.en.md">Methodology source on GitHub</a> · <a href="https://github.com/iroda-bench/iroda-bench/blob/main/docs/benchmark.en.md">Run guide</a></p>
+    </section>
+  </main>
+  <footer class="shell footer"><span><strong>IRODA</strong> · Hungarian enterprise benchmark · <a href="https://github.com/iroda-bench/iroda-bench/blob/main/LICENSE">MIT license</a></span><span>PROJECT PREVIEW · 0.1.0</span></footer>
+</body>
+</html>

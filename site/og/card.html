@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../dist/tokens.css">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      width: 1200px;
+      height: 630px;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      background: var(--iroda-paper);
+      color: var(--iroda-ink);
+      font-family: var(--iroda-font-ui);
+    }
+    .copy { display: flex; flex-direction: column; padding: 64px 56px 56px 72px; }
+    .lockup { display: flex; align-items: center; gap: 16px; }
+    .lockup strong { font-size: 30px; font-weight: 700; letter-spacing: var(--iroda-tracking-wordmark); }
+    .index {
+      margin: 56px 0 20px;
+      padding-top: 16px;
+      border-top: 2px solid var(--iroda-rule);
+      color: var(--iroda-copper);
+      font: 700 22px/1.4 var(--iroda-font-mono);
+      letter-spacing: var(--iroda-tracking-label);
+    }
+    h1 {
+      margin: 0;
+      font: 400 68px/var(--iroda-leading-display) var(--iroda-font-display);
+      letter-spacing: var(--iroda-tracking-display);
+    }
+    .foot { margin-top: auto; color: var(--iroda-muted); font: 22px/1.4 var(--iroda-font-mono); }
+    .ledger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 22px;
+      padding: 48px 40px;
+      background: var(--iroda-ledger);
+      color: var(--iroda-on-ledger);
+      font: 24px/1.4 var(--iroda-font-mono);
+    }
+    .ledger span { display: block; padding-top: 14px; border-top: 1px solid var(--iroda-rule-on-ledger); }
+    .ledger b { color: var(--iroda-copper-on-ledger); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="copy">
+    <div class="lockup"><img src="../dist/mark.svg" width="56" height="56" alt=""><strong>IRODA</strong></div>
+    <p class="index" data-hu="NYÍLT BENCHMARK / ELŐZETES" data-en="OPEN BENCHMARK / PREVIEW"></p>
+    <h1 data-hu="Magyar LLM- és AI-agent-benchmark nagyvállalati feladatokra" data-en="Hungarian LLM and AI agent benchmark for enterprise tasks"></h1>
+    <p class="foot">irodabench.hu · v0.1.0</p>
+  </div>
+  <div class="ledger">
+    <span><b>01</b> <span style="display:inline;border:0;padding:0" data-hu="Friss adatbázis" data-en="Fresh database"></span></span>
+    <span><b>02</b> <span style="display:inline;border:0;padding:0" data-hu="MCP-eszközhívás" data-en="MCP tool calls"></span></span>
+    <span><b>03</b> <span style="display:inline;border:0;padding:0" data-hu="Determinisztikus pontozás" data-en="Deterministic grading"></span></span>
+  </div>
+  <script>
+    const lang = new URLSearchParams(location.search).get("lang") === "en" ? "en" : "hu";
+    document.documentElement.lang = lang;
+    for (const el of document.querySelectorAll("[data-hu]")) el.textContent = el.dataset[lang];
+  </script>
+</body>
+</html>

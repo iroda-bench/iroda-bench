@@ -1,0 +1,25 @@
+# IRODA
+
+> IRODA (Intelligent Reasoning for Office Decisions and Actions) is an open-source Hungarian enterprise benchmark for large language models (LLMs) and AI agents. It measures whether a model or agent finds the right business records in a simulated Hungarian company, carries out the requested action accurately through Model Context Protocol (MCP) tools, and leaves every other record unchanged. A deterministic grader scores each trial with no judge model. "Iroda" is also the Hungarian word for "office"; this file is about the benchmark.
+
+Status: version 0.1.0 preview with two public starter cases. No leaderboard has been published yet. The code and data are MIT licensed. Benchmark prompts and tool names are in Hungarian.
+
+## Methodology
+
+- [Módszertan (Hungarian)](https://www.irodabench.hu/modszertan/): run modes, grading rules, worked grading examples and limitations
+- [Methodology (English)](https://www.irodabench.hu/en/methodology/): the same page in English
+- [Full measurement methodology](https://github.com/iroda-bench/iroda-bench/blob/main/docs/methodology.en.md): reproducibility and reporting requirements
+
+## Project
+
+- [Homepage (Hungarian)](https://www.irodabench.hu/)
+- [Homepage (English)](https://www.irodabench.hu/en/)
+- [Source code](https://github.com/iroda-bench/iroda-bench)
+- [Run guide](https://github.com/iroda-bench/iroda-bench/blob/main/docs/benchmark.en.md)
+- [Dataset description](https://github.com/iroda-bench/iroda-bench/blob/main/DATASET.md)
+- [MCP tools](https://github.com/iroda-bench/iroda-bench/blob/main/docs/mcp.en.md)
+
+## Optional
+
+- [Agent integration contract](https://github.com/iroda-bench/iroda-bench/blob/main/docs/agent.en.md)
+- [Citation metadata](https://github.com/iroda-bench/iroda-bench/blob/main/CITATION.cff)

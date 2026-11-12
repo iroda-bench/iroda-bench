@@ -3,17 +3,118 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Which AI models and agents can you trust with Hungarian business work? IRODA is an open, reproducible benchmark that measures accuracy and unrequested changes.">
+  <meta name="description" content="Which large language models (LLMs) and AI agents can you trust with Hungarian business work? IRODA is an open, reproducible benchmark that measures accuracy and unrequested changes.">
+  <title>IRODA · Hungarian LLM and AI agent benchmark for enterprise tasks</title>
+  <link rel="canonical" href="https://www.irodabench.hu/en/">
+  <link rel="alternate" hreflang="hu" href="https://www.irodabench.hu/">
+  <link rel="alternate" hreflang="en" href="https://www.irodabench.hu/en/">
+  <link rel="alternate" hreflang="x-default" href="https://www.irodabench.hu/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="IRODA · Hungarian enterprise AI benchmark">
-  <meta property="og:description" content="Which AI models and agents can you trust with Hungarian business work? IRODA is an open, reproducible benchmark that measures accuracy and unrequested changes.">
+  <meta property="og:site_name" content="IRODA">
+  <meta property="og:url" content="https://www.irodabench.hu/en/">
+  <meta property="og:title" content="IRODA · Hungarian LLM and AI agent benchmark for enterprise tasks">
+  <meta property="og:description" content="Which large language models (LLMs) and AI agents can you trust with Hungarian business work? IRODA is an open, reproducible benchmark that measures accuracy and unrequested changes.">
   <meta property="og:locale" content="en_US">
-  <title>IRODA · Hungarian enterprise AI benchmark</title>
+  <meta property="og:locale:alternate" content="hu_HU">
+  <meta property="og:image" content="https://www.irodabench.hu/og-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="IRODA: an open-source Hungarian LLM and AI agent benchmark for enterprise tasks.">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../tokens.css">
   <link rel="stylesheet" href="../style.css">
-  <link rel="alternate" hreflang="en" href="./">
-  <link rel="alternate" hreflang="hu" href="../">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.irodabench.hu/#website",
+        "url": "https://www.irodabench.hu/",
+        "name": "IRODA",
+        "alternateName": [
+          "IRODA benchmark",
+          "Intelligent Reasoning for Office Decisions and Actions"
+        ],
+        "inLanguage": [
+          "hu",
+          "en"
+        ],
+        "publisher": {
+          "@id": "https://www.irodabench.hu/#viktor-tisza"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.irodabench.hu/en/#webpage",
+        "url": "https://www.irodabench.hu/en/",
+        "name": "IRODA · Hungarian LLM and AI agent benchmark for enterprise tasks",
+        "inLanguage": "en",
+        "isPartOf": {
+          "@id": "https://www.irodabench.hu/#website"
+        },
+        "about": {
+          "@id": "https://www.irodabench.hu/#software"
+        },
+        "dateModified": "2026-11-12"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.irodabench.hu/#viktor-tisza",
+        "name": "Viktor Tisza",
+        "givenName": "Viktor",
+        "familyName": "Tisza",
+        "jobTitle": "Machine learning and AI systems developer",
+        "sameAs": [
+          "https://www.linkedin.com/in/viktor-tisza/"
+        ]
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "@id": "https://www.irodabench.hu/#software",
+        "name": "IRODA",
+        "alternateName": "Intelligent Reasoning for Office Decisions and Actions",
+        "description": "Open-source Hungarian enterprise benchmark that measures tool use by large language models (LLMs) and AI agents, with deterministic grading.",
+        "url": "https://www.irodabench.hu/",
+        "codeRepository": "https://github.com/iroda-bench/iroda-bench",
+        "programmingLanguage": "Python",
+        "license": "https://opensource.org/licenses/MIT",
+        "version": "0.1.0",
+        "keywords": [
+          "LLM benchmark",
+          "AI agent benchmark",
+          "Hungarian",
+          "MCP",
+          "Inspect"
+        ],
+        "author": {
+          "@id": "https://www.irodabench.hu/#viktor-tisza"
+        }
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://www.irodabench.hu/#dataset",
+        "name": "IRODA 0.1.0 seed database",
+        "description": "Synthetic, linked business records of a fictional Hungarian food wholesaler, Rézrigó Élelmiszer-nagykereskedelmi Kft., in an SQLite database: 17 tables and more than 9,500 records, including quotes, invoices and emails.",
+        "url": "https://github.com/iroda-bench/iroda-bench/blob/main/DATASET.md",
+        "version": "0.1.0",
+        "inLanguage": "hu",
+        "isAccessibleForFree": true,
+        "license": "https://opensource.org/licenses/MIT",
+        "creator": {
+          "@id": "https://www.irodabench.hu/#viktor-tisza"
+        },
+        "isBasedOn": "https://github.com/jpwhite3/northwind-SQLite3",
+        "distribution": {
+          "@type": "DataDownload",
+          "encodingFormat": "application/vnd.sqlite3",
+          "contentUrl": "https://github.com/iroda-bench/iroda-bench/raw/main/data/seed.db"
+        }
+      }
+    ]
+  }
+  </script>
   <script>document.documentElement.classList.add("js")</script>
   <script src="../motion.js" defer></script>
 </head>
@@ -123,11 +224,11 @@
         <div><dt>Write tasks</dt><dd>The grader compares the final database with the starting state and checks the new record against the prompt.</dd></div>
         <div><dt>Reproducibility</dt><dd>The run log identifies the database and tasks by hash, so the inputs of a measurement can be checked byte for byte.</dd></div>
       </dl>
-      <p class="source-link"><a href="https://github.com/iroda-bench/iroda-bench/blob/main/docs/methodology.en.md">Read the full methodology</a></p>
+      <p class="source-link"><a href="./methodology/">Read the full methodology, with a grading example</a></p>
     </section>
     <section id="benchmark" class="section">
       <p class="eyebrow">BENCHMARK / MODES</p>
-      <h2>We measure the model and the full agent separately</h2>
+      <h2>We measure the LLM and the full agent separately</h2>
       <p class="section-intro">Both modes use the same tasks, business tools and grading rules. This shows whether a result comes from the model or from the agent’s orchestration.</p>
       <div class="modes">
         <article class="mode"><p class="eyebrow">01 / MODEL</p><h3>Model benchmark</h3><p>Language models run in a fixed loop. Each one receives the same prompt and the same tools.</p></article>
@@ -147,6 +248,7 @@
     <section id="results" class="results">
       <p class="eyebrow">RESULTS / PUBLICATION</p>
       <h2>No published results yet</h2>
+      <p class="status-line"><span>Status: 0.1.0 preview, 2 public starter cases</span><span>Updated: <time datetime="2026-11-12">12 November 2026</time></span></p>
       <p>The first leaderboard will appear here. Every comparison will include run settings, the task set version and per-task outcomes. We’ll report run errors and incomplete trials separately.</p>
     </section>
     <section id="sponsorship" class="section">
@@ -176,8 +278,19 @@ make check</code></pre>
       <h2>Who is building IRODA?</h2>
       <p class="section-intro">IRODA was started by <a href="https://www.linkedin.com/in/viktor-tisza/">Viktor Tisza</a>, who has been developing machine learning and AI systems for nearly 20 years.</p>
       <p class="section-intro">New contributors are welcome. If you’d like to propose a Hungarian business task, improve grading, or evaluate models and agents, <a href="mailto:vtisza@gmail.com">email Viktor</a>.</p>
+      <details class="citation">
+        <summary>Cite IRODA in BibTeX</summary>
+        <pre class="commands"><code>@software{tisza2026iroda,
+  author  = {Tisza, Viktor},
+  title   = {{IRODA}: Intelligent Reasoning for Office Decisions and Actions},
+  year    = {2026},
+  version = {0.1.0},
+  url     = {https://github.com/iroda-bench/iroda-bench},
+  note    = {Hungarian enterprise LLM and AI agent benchmark}
+}</code></pre>
+      </details>
     </section>
   </main>
-  <footer class="shell footer"><span><strong>IRODA</strong> · Hungarian enterprise benchmark · <a href="https://github.com/iroda-bench/iroda-bench/blob/main/LICENSE">MIT license</a></span><span>PROJECT PREVIEW</span></footer>
+  <footer class="shell footer"><span><strong>IRODA</strong> · Hungarian enterprise benchmark · <a href="https://github.com/iroda-bench/iroda-bench/blob/main/LICENSE">MIT license</a></span><span>PROJECT PREVIEW · 0.1.0</span></footer>
 </body>
 </html>

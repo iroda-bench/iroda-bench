@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hogyan pontozza az IRODA a nagy nyelvi modelleket (LLM) és az AI-agenteket? A két futtatási mód, a determinisztikus pontozás, kidolgozott pontozási példák és a mérés korlátai.">
+  <title>Módszertan · IRODA magyar LLM- és AI-agent-benchmark</title>
+  <link rel="canonical" href="https://www.irodabench.hu/modszertan/">
+  <link rel="alternate" hreflang="hu" href="https://www.irodabench.hu/modszertan/">
+  <link rel="alternate" hreflang="en" href="https://www.irodabench.hu/en/methodology/">
+  <link rel="alternate" hreflang="x-default" href="https://www.irodabench.hu/modszertan/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="IRODA">
+  <meta property="og:url" content="https://www.irodabench.hu/modszertan/">
+  <meta property="og:title" content="Módszertan · IRODA magyar LLM- és AI-agent-benchmark">
+  <meta property="og:description" content="Hogyan pontozza az IRODA a nagy nyelvi modelleket (LLM) és az AI-agenteket? A két futtatási mód, a determinisztikus pontozás, kidolgozott pontozási példák és a mérés korlátai.">
+  <meta property="og:locale" content="hu_HU">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://www.irodabench.hu/og-hu.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="IRODA: nyílt forráskódú magyar LLM- és AI-agent-benchmark nagyvállalati feladatokra.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "@id": "https://www.irodabench.hu/modszertan/#article",
+        "url": "https://www.irodabench.hu/modszertan/",
+        "headline": "Hogyan pontozza az IRODA a modelleket és az agenteket?",
+        "inLanguage": "hu",
+        "isPartOf": {"@id": "https://www.irodabench.hu/#website"},
+        "about": {"@id": "https://www.irodabench.hu/#software"},
+        "author": {"@id": "https://www.irodabench.hu/#viktor-tisza"},
+        "datePublished": "2026-11-12",
+        "dateModified": "2026-11-12"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "IRODA", "item": "https://www.irodabench.hu/"},
+          {"@type": "ListItem", "position": 2, "name": "Módszertan", "item": "https://www.irodabench.hu/modszertan/"}
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Ugrás a tartalomra</a>
+  <header class="masthead shell">
+    <a class="brand" href="../"><img class="mark" src="../mark.svg" width="48" height="48" alt=""><span><strong>IRODA</strong><small>Magyar nagyvállalati benchmark AI-agentek és LLM-ek számára</small></span></a>
+    <nav>
+      <a href="../">Kezdőlap</a>
+      <a href="./" aria-current="page">Módszertan</a>
+      <a href="../#results">Eredmények</a>
+      <a href="../#start">Gyors kezdés</a>
+      <a href="https://github.com/iroda-bench/iroda-bench">GitHub</a>
+    </nav>
+    <div class="languages">
+      <a href="../en/methodology/" lang="en" hreflang="en" aria-label="English">EN</a>
+      <a href="./" lang="hu" hreflang="hu" aria-current="page" aria-label="Magyar">HU</a>
+    </div>
+  </header>
+  <main id="main" class="shell">
+    <section class="page-intro" aria-labelledby="page-title">
+      <p class="eyebrow">MÓDSZERTAN / PONTOZÁS</p>
+      <h1 id="page-title">Hogyan pontozza az IRODA a modelleket és az agenteket?</h1>
+      <p class="lead">Az IRODA nagy nyelvi modelleket (LLM) és AI-agenteket mér magyar nyelvű üzleti feladatokon. Az eredményt determinisztikus pontozó adja bíráló modell nélkül, ezért ugyanarra a végállapotra mindig ugyanaz a pontszám jár.</p>
+      <p class="status-line"><span>Módszertan a 0.1.0-s verzióhoz</span><span>Frissítve: <time datetime="2026-11-12">2026. november 12.</time></span></p>
+    </section>
+
+    <section id="modes" class="section">
+      <p class="eyebrow">01 / FUTTATÁSI MÓDOK</p>
+      <h2>Mit mér a két mód?</h2>
+      <p class="section-intro">A két mód ugyanazokat a feladatokat, irodai eszközöket és pontozási szabályokat használja. Az LLM-ek összehasonlításához a modellmódot használd. Az agent vezérlésének hatását ugyanazzal a pontos modellverzióval, mindkét módban mérd.</p>
+      <dl class="method-rows">
+        <div><dt>Modellmód</dt><dd><code>model_benchmark</code>. Rögzített a feladat, a kiinduló adatbázis (seed), a magyar rendszerprompt, az MCP-felület és az Inspect eszközhívási ciklusa. Csak a modell, a szolgáltatói végpont és a generálási beállítások változnak.</dd></div>
+        <div><dt>Agentmód</dt><dd><code>agent_benchmark</code>. Rögzített a feladat, a seed, a megengedett irodai műveletek, a pontozás és a limitek. Az agentprogram, a promptok, a memória és a vezérlés szabadon változhat. A program elkülönített Docker-konténerben fut.</dd></div>
+      </dl>
+    </section>
+
+    <section id="lifecycle" class="section">
+      <p class="eyebrow">02 / PRÓBÁLKOZÁS</p>
+      <h2>Minden próbálkozás friss másolatból indul</h2>
+      <p class="section-intro">Egy próbálkozás egy feladat egyszeri végrehajtása. Az ismétlések egymástól függetlenek.</p>
+      <ol class="steps">
+        <li>A gazdagép beolvassa és validálja a feladatot.</li>
+        <li>A próbálkozás a <code>data/seed.db</code> saját ideiglenes másolatából indul, és új MCP-munkamenetet kap.</li>
+        <li>A modell vagy az agent megkapja az eredeti magyar feladatleírást, majd az irodai eszközöket hívja, amíg megáll vagy eléri a limitet.</li>
+        <li>A gazdagépen futó pontozó a végső választ vagy a futási adatbázist olvassa. A pontozó, az elvárt eredmények és a seed nincsenek az agentkonténerben.</li>
+        <li>Az Inspect naplója megőrzi a nyomvonalat és a pontszámot. Az ideiglenes adatbázis a pontozás után törlődik.</li>
+      </ol>
+    </section>
+
+    <section id="grading" class="section">
+      <p class="eyebrow">03 / PONTOZÁS</p>
+      <h2>Két pontozási szabály, egyértelmű eredmény</h2>
+      <p class="section-intro">A pontozott próbálkozás <code>C</code> (helyes) vagy <code>I</code> (helytelen) eredményt kap. Az Inspect pontossági mutatója ezeket 1-re és 0-ra képezi le, ismétlésnél pedig feladatonként átlagol.</p>
+      <dl class="method-rows">
+        <div><dt><code>answer</code></dt><dd>Olvasási feladat, csak olvasóeszközökkel. A pontozó JSON objektumként értelmezi a végső választ. Egyetlen <code>json</code> jelölésű kódblokk is elfogadott. Az elvárt kulcsok értékének és típusának egyeznie kell, további kulcsok szerepelhetnek.</dd></div>
+        <div><dt><code>task_insert</code></dt><dd>Írási feladat, íróeszközökkel is. Pontosan egy új feladatrekordot vár a kért mezőkkel, és sorrendtől függetlenül összeveti a seed üzleti tábláinak összes többi sorát. A végső szöveg és a köztes lépések nem számítanak, csak a végállapot.</dd></div>
+      </dl>
+    </section>
+
+    <section id="example" class="section">
+      <p class="eyebrow">04 / PONTOZÁSI PÉLDA</p>
+      <h2>Így pontoz a két nyilvános mintafeladat</h2>
+      <p class="section-intro">A példák a nyilvános mintafeladatok valódi elvárt értékeit használják. A próbálkozások szemléltető példák, nem mért eredmények.</p>
+
+      <h3>Olvasási feladat: <code>office-date</code></h3>
+      <p class="prompt-label">Feladatleírás</p>
+      <blockquote class="prompt-quote" lang="hu">Mi az IRODA fordulónapja és pénzneme? Adj vissza egy JSON objektumot a fordulonap (ÉÉÉÉ-HH-NN) és penznem (ISO kód) mezőkkel.</blockquote>
+      <div class="table-scroll" role="region" aria-labelledby="answer-caption" tabindex="0">
+        <table class="record-table">
+          <caption id="answer-caption">Végső válaszok és pontjuk · Szemléltető példa</caption>
+          <thead><tr><th scope="col">Végső válasz</th><th scope="col">Eredmény</th><th scope="col">Indoklás</th></tr></thead>
+          <tbody>
+            <tr><td><code>{"fordulonap": "2026-11-08", "penznem": "HUF"}</code></td><td><b class="badge outcome-correct">Helyes</b></td><td>Minden elvárt kulcs és érték egyezik.</td></tr>
+            <tr><td><code>{"fordulonap": "2026-11-08", "penznem": "HUF", "forras": "metaadat"}</code></td><td><b class="badge outcome-correct">Helyes</b></td><td>További kulcs szerepelhet.</td></tr>
+            <tr><td>A fordulónap 2026. november 8., a pénznem forint.</td><td><b class="badge outcome-incorrect">Helytelen</b></td><td>Prózai válasz, nem JSON objektum.</td></tr>
+            <tr><td><code>{"fordulonap": "2026-11-08"}</code></td><td><b class="badge outcome-incorrect">Helytelen</b></td><td>Hiányzik a <code>penznem</code> kulcs.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Írási feladat: <code>quote-follow-up</code></h3>
+      <p class="prompt-label">Feladatleírás</p>
+      <blockquote class="prompt-quote" lang="hu">Hozz létre pontosan egy nyitott, magas prioritású követési feladatot a 20003-as ajánlathoz Szőke Lilla számára, 2026. november 12-i határidővel. A cím legyen „Decemberi ajánlat követése”, a leírás pedig „Egyeztesd a vevővel a decemberi készletpótlást.” Más üzleti adatot ne módosíts.</blockquote>
+      <div class="table-scroll" role="region" aria-labelledby="insert-caption" tabindex="0">
+        <table class="record-table">
+          <caption id="insert-caption">Az adatbázis végállapota és pontja · Szemléltető példa</caption>
+          <thead><tr><th scope="col">Végállapot</th><th scope="col">Eredmény</th><th scope="col">Indoklás</th></tr></thead>
+          <tbody>
+            <tr><td>Egy új, a kérésnek megfelelő feladatrekord. Minden más rekord változatlan.</td><td><b class="badge outcome-correct">Helyes</b></td><td>A kért mezők egyeznek, nincs mellékhatás.</td></tr>
+            <tr><td>A helyes feladatrekord mellett az ajánlat állapota is megváltozott.</td><td><b class="badge outcome-incorrect">Helytelen</b></td><td>Nem kért módosítás egy másik üzleti táblában.</td></tr>
+            <tr><td>Ugyanaz a feladatrekord kétszer jött létre.</td><td><b class="badge outcome-incorrect">Helytelen</b></td><td>Pontosan egy új rekord az elvárás.</td></tr>
+            <tr><td>Egy új feladatrekord <time datetime="2026-11-13">2026. november 13-i</time> határidővel.</td><td><b class="badge outcome-incorrect">Helytelen</b></td><td>A határidő eltér a kérttől.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="reporting" class="section">
+      <p class="eyebrow">05 / KÖZLÉS</p>
+      <h2>Mit közlünk minden összehasonlítás mellett?</h2>
+      <p class="section-intro">A futtatási napló <code>seed_sha256</code> és <code>tasks_sha256</code> lenyomattal azonosítja a bemenetet. A többi adatot külön rögzítjük.</p>
+      <dl class="method-rows">
+        <div><dt>Bemenet</dt><dd>Commit vagy kiadás, seed- és feladatlenyomat, esetazonosítók és a tervezett ismétlések száma.</dd></div>
+        <div><dt>Konfiguráció</dt><dd>Benchmarkmód, pontos modell és szolgáltató, a futtatás dátuma, mintavételezés, ismétlésszám, párhuzamosság és limitek.</dd></div>
+        <div><dt>Agent és környezet</dt><dd>Az agent forrásrevíziója, parancsa és image-lenyomata, valamint teljesítménymérésnél a gazdagép platformja.</dd></div>
+        <div><dt>Eredmények</dt><dd>Helyes és helytelen próbálkozások feladatonként, futtatási hibák, elért limitek és befejezetlen próbálkozások, külön jelölve.</dd></div>
+      </dl>
+    </section>
+
+    <section id="limitations" class="section">
+      <p class="eyebrow">06 / KORLÁTOK</p>
+      <h2>Mire nem elég még a mérés?</h2>
+      <ul class="limits">
+        <li>A 0.1.0-s verzió két nyilvános mintafeladatot tartalmaz, közzétett elvárt eredményekkel. Ezek a mérési folyamatot ellenőrzik, a modellek minőségéről még nem adnak elég alapot.</li>
+        <li>A nyilvános feladatok bekerülhetnek a modellek tanítóadataiba. A ranglistához ezért bővebb feladatkészlet kell.</li>
+        <li>A közzétett eredmény egy rögzített konfiguráció megfigyelése. Szolgáltatói frissítés vagy mintavételezés miatt azonos bemenet mellett is változhat.</li>
+        <li>Az adatok egy fiktív cégé, a Rézrigó Élelmiszer-nagykereskedelmi Kft.-é. A mérés nem fed le minden vállalati folyamatot vagy ágazatot.</li>
+        <li>A pontozó a végállapotot ítéli meg. A válasz stílusát, a lépések számát vagy a költséget külön kell közölni.</li>
+      </ul>
+      <p class="source-link"><a href="https://github.com/iroda-bench/iroda-bench/blob/main/docs/methodology.hu.md">A módszertan forrása a GitHubon</a> · <a href="https://github.com/iroda-bench/iroda-bench/blob/main/docs/benchmark.hu.md">Futtatási útmutató</a></p>
+    </section>
+  </main>
+  <footer class="shell footer"><span><strong>IRODA</strong> · Magyar nagyvállalati benchmark · <a href="https://github.com/iroda-bench/iroda-bench/blob/main/LICENSE">MIT-licenc</a></span><span>PROJEKTELŐNÉZET · 0.1.0</span></footer>
+</body>
+</html>

@@ -12,7 +12,7 @@ IRODA (*Intelligent Reasoning for Office Decisions and Actions*) is an open-sour
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-193536)](#quick-start)
 [![SQLite 3.37 or newer](https://img.shields.io/badge/SQLite-3.37%2B-193536)](#quick-start)
 
-[Magyar](README.md) · [Quick start](#quick-start) · [Documentation](#documentation) · [Contributing](CONTRIBUTING.md)
+[Magyar](README.md) · [Website](https://www.irodabench.hu/en/) · [Quick start](#quick-start) · [Documentation](#documentation) · [Contributing](CONTRIBUTING.md)
 
 ## Quick start
 
@@ -77,3 +77,7 @@ Contributions are welcome, including Hungarian business cases, grader improvemen
 ## License
 
 IRODA's original code and documentation are MIT licensed. Retain the upstream notices when redistributing derived Northwind data. The seed also includes those notices in the `licenc_ertesites` table. [MIT license](LICENSE) · [Upstream notices](sources/)
+
+## Citation
+
+If you use IRODA in a publication or report, the citation metadata is in `CITATION.cff`. GitHub also generates BibTeX from it. [Citation metadata](CITATION.cff)
